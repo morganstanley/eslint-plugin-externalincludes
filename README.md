@@ -10,13 +10,13 @@ You'll first need to install [ESLint](https://eslint.org/):
 npm i eslint --save-dev
 ```
 
-Next, install `eslint-plugin-externalincludes`:
+Next, install `@morgan-stanley/eslint-plugin-externalincludes`:
 
 ```sh
-npm install eslint-plugin-externalincludes --save-dev
+npm install @morgan-stanley/eslint-plugin-externalincludes --save-dev
 ```
 
-While `eslint-plugin-externalincludes` installs @html-eslint/eslint-plugin and @html-eslint/parser as peerDependencies you can optionally install directly.
+While `@morgan-stanley/eslint-plugin-externalincludes` installs @html-eslint/eslint-plugin and @html-eslint/parser as peerDependencies you can optionally install directly.
 
 ## Usage
 
@@ -34,7 +34,7 @@ You can omit the `eslint-plugin-` prefix:
   ],
   plugins: [
     "@html-eslint",
-    "externalincludes"
+    "@morgan-stanley/externalincludes"
   ],
 ```
 
@@ -43,8 +43,8 @@ Then configure the rules you want to use under the rules section:
 ```json
 {
     "rules": {
-        "externalincludes/enforce-no-external-url": "error",
-        "externalincludes/require-script-integrity": "error",
+        "@morgan-stanley/externalincludes/enforce-no-external-url": "error",
+        "@morgan-stanley/externalincludes/require-script-integrity": "error",
     }
 }
 ```
@@ -62,14 +62,10 @@ If you are using the VS Code ESLint extension, update settings.json to include v
 
 <!-- begin auto-generated rules list -->
 
-💼 Configurations enabled in.\
-⚠️ Configurations set to warn in.\
-✅ Set in the `recommended` configuration.
-
-| Name                                                               | Description                                      | 💼 | ⚠️ |
-| :----------------------------------------------------------------- | :----------------------------------------------- | :- | :- |
-| [enforce-no-external-url](docs/rules/enforce-no-external-url.md)   | Disallow external includes.                      | ✅  |    |
-| [require-script-integrity](docs/rules/require-script-integrity.md) | Require `integrity` attribute at `<script>` tag. |    | ✅  |
+| Name                                                               | Description                                      |
+| :----------------------------------------------------------------- | :----------------------------------------------- |
+| [enforce-no-external-url](docs/rules/enforce-no-external-url.md)   | Disallow external includes.                      |
+| [require-script-integrity](docs/rules/require-script-integrity.md) | Require `integrity` attribute at `<script>` tag. |
 
 <!-- end auto-generated rules list -->
 
