@@ -1,8 +1,8 @@
-# Disallow external includes (`externalincludes/enforce-no-external-url`)
-
-💼 This rule is enabled in the ✅ `recommended` config.
+# Disallow external includes (`@morgan-stanley/externalincludes/enforce-no-external-url`)
 
 <!-- end auto-generated rule header -->
+
+💼 This rule is enabled in the ✅ `recommended` config.
 
 #### Valid
 

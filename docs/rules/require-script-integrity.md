@@ -1,8 +1,8 @@
-# Require `integrity` attribute at `<script>` tag (`externalincludes/require-script-integrity`)
-
-⚠️ This rule _warns_ in the ✅ `recommended` config.
+# Require `integrity` attribute at `<script>` tag (`@morgan-stanley/externalincludes/require-script-integrity`)
 
 <!-- end auto-generated rule header -->
+
+⚠️ This rule _warns_ in the ✅ `recommended` config.
 
 #### Valid
 
