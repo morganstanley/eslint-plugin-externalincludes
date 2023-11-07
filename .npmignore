@@ -1,0 +1,5 @@
+.vscode/
+tests/
+*.tgz
+.hintrc
+.eslintrc.js
