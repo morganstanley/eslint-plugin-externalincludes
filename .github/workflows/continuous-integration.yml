@@ -15,7 +15,7 @@ jobs:
       NODE_VERSION: '20'
 
     steps:
-    - uses: actions/checkout@v4.1.1
+    - uses: actions/checkout@v4
     - name: Use Node.js ${{ env.NODE_VERSION }}
       uses: actions/setup-node@v4
       with:
@@ -24,8 +24,9 @@ jobs:
     - run: npm run test
 
     - name: Codecov
-      uses: codecov/codecov-action@v3.1.4
+      uses: codecov/codecov-action@v4
       with:
         directory: ./build/coverage
         flags: unittests
-        fail_ci_if_error: false
+        fail_ci_if_error: true
+        token: ${{ secrets.CODECOV_TOKEN }}
