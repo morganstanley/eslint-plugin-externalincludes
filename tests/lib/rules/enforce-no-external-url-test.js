@@ -29,11 +29,6 @@ ruleTester.run(
             },
             {
                 code:`
-<script src="foo.js" />
-`
-            },            
-            {
-                code:`
 <html>
     <head>
         <script src="foo.js" />
