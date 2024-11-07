@@ -37,6 +37,8 @@ class RuleTester extends ESLintRuleTester {
 
 module.exports = function createRuleTester() {
     return new RuleTester({
-        parser: require.resolve("@html-eslint/parser"),
+        languageOptions: {
+            parser: require("@html-eslint/parser"),
+        }
     });
 }
