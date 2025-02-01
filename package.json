@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.2",
-    "@html-eslint/eslint-plugin": "^0.31.1",
+    "@html-eslint/eslint-plugin": "^0.34.0",
     "@html-eslint/parser": "^0.31.0",
     "eslint": "^9.13.0",
     "eslint-doc-generator": "^1.7.1",
