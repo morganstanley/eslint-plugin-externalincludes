@@ -20,7 +20,7 @@
     "lint:eslint-docs": "npm run update:eslint-docs -- --check",
     "lint:js": "eslint .",
     "lint:fix": "npm run lint:js -- --fix",
-    "test": "mocha tests --recursive",
+    "test": "nyc mocha tests --recursive",
     "update:eslint-docs": "eslint-doc-generator"
   },
   "devDependencies": {
@@ -34,7 +34,8 @@
     "eslint-plugin-eslint-plugin": "^6.4.0",
     "eslint-plugin-license-header": "^0.8.0",
     "eslint-plugin-n": "^17.16.2",
-    "mocha": "^11.1.0"
+    "mocha": "^11.1.0",
+    "nyc": "^17.1.0"
   },
   "engines": {
     "node": "^14.17.0 || ^16.0.0 || >= 18.0.0"

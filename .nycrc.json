@@ -1,0 +1,22 @@
+{
+  "all": true,
+  "include": [
+    "lib/**/*.js"
+  ],
+  "exclude": [
+    "tests/**/*.js"
+  ],
+  "reporter": [
+    "lcov",
+    "text",
+    "text-summary"
+  ],
+  "report-dir": "./coverage",
+  "temp-dir": "./coverage/.nyc_output",
+  "check-coverage": true,
+  "per-file": false,
+  "lines": 95,
+  "statements": 95,
+  "functions": 95,
+  "branches": 80
+}
