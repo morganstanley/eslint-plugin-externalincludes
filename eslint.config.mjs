@@ -98,5 +98,15 @@ export default [
                 ...globals.mocha,
             }
         }
+    },
+
+    // Enable Mocha globals for all test files (Flat config way)
+    {
+        files: ["tests/**/*.js"],
+        languageOptions: {
+            globals: {
+                ...globals.mocha,
+            }
+        }
     }
 ];
