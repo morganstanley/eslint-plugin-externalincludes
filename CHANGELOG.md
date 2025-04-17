@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Removed npm-run-all dependency and updated scripts configuration
 - Added lint:fix script
-- Continous integration action now using 'npm ci'
+- Continuous integration action now using 'npm ci'
 
 ### Dependencies
 - Bumped @html-eslint/eslint-plugin from 0.34.0 to 0.35.0
