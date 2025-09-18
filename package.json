@@ -1,6 +1,6 @@
 {
   "name": "@morgan-stanley/eslint-plugin-externalincludes",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Suite of @html-eslint ESLint rules for working with external references such as script src and link hrefs",
   "keywords": [
     "eslint",
