@@ -1,6 +1,6 @@
 # eslint-plugin-externalincludes
 
-![Lifecycle Active](https://badgen.net/badge/Lifecycle/Active/green)
+![Lifecycle Active](https://img.shields.io/badge/Lifecycle-Active-brightgreen)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![npm version](https://badge.fury.io/js/%40morgan-stanley%2Feslint-plugin-externalincludes.svg)](https://www.npmjs.com/package/@morgan-stanley/eslint-plugin-externalincludes)
 [![CI](https://github.com/morganstanley/eslint-plugin-externalincludes/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/morganstanley/eslint-plugin-externalincludes/actions/workflows/continuous-integration.yml)
