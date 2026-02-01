@@ -24,7 +24,7 @@
     "update:eslint-docs": "eslint-doc-generator"
   },
   "devDependencies": {
-    "@eslint/compat": "^1.2.7",
+    "@eslint/compat": "^2.0.2",
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^9.23.0",
     "@html-eslint/eslint-plugin": "^0.54.2",
