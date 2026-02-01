@@ -30,7 +30,7 @@
     "@html-eslint/eslint-plugin": "^0.54.2",
     "@html-eslint/parser": "^0.52.0",
     "eslint": "^9.23.0",
-    "eslint-doc-generator": "^2.1.2",
+    "eslint-doc-generator": "^3.0.2",
     "eslint-plugin-eslint-plugin": "^7.0.0",
     "eslint-plugin-license-header": "^0.8.0",
     "eslint-plugin-n": "^17.16.2",
