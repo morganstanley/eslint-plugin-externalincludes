@@ -28,7 +28,7 @@
     "@eslint/eslintrc": "^3.3.1",
     "@eslint/js": "^10.0.1",
     "@html-eslint/eslint-plugin": "^0.57.1",
-    "@html-eslint/parser": "^0.57.1",
+    "@html-eslint/parser": "^0.60.0",
     "eslint": "^10.0.2",
     "eslint-doc-generator": "^3.0.2",
     "eslint-plugin-eslint-plugin": "^7.0.0",
