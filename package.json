@@ -32,7 +32,7 @@
     "eslint": "^10.0.2",
     "eslint-doc-generator": "^3.0.2",
     "eslint-plugin-eslint-plugin": "^7.0.0",
-    "eslint-plugin-license-header": "^0.8.0",
+    "eslint-plugin-license-header": "^0.9.0",
     "eslint-plugin-n": "^18.0.1",
     "fast-check": "^4.1.1",
     "mocha": "^11.1.0",
