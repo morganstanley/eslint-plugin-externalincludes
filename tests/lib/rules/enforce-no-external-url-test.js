@@ -62,6 +62,11 @@ ruleTester.run(
                     },
                 ],
             },
+            {
+                code:`
+<iframe src="local-frame.html"></iframe>
+`
+            },
         ],
         invalid: [
             {
@@ -150,6 +155,36 @@ ruleTester.run(
                         column: 9,
                         endColumn: 43,
                         endLine: 4
+                    }
+                ]
+            },
+            {
+                code:`
+<iframe src="https://evil.com/clickjack.html"></iframe>
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<img src="https://www.myfoo.com/foo.png" />
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<form action="https://evil.com/login" method="POST"></form>
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
                     }
                 ]
             },
