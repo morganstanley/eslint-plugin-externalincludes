@@ -15,6 +15,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 ```
 
+The `integrity` value must match the [Subresource Integrity](https://www.w3.org/TR/SRI/#the-integrity-attribute)
+format: `sha256-`, `sha384-`, or `sha512-` followed by a base64-encoded digest (optionally as a
+whitespace-separated list of hashes). Values that don't match this format - including weaker
+algorithms like `sha1` - are treated the same as a missing `integrity` attribute.
+
 #### Options
 
 ##### `ignoredDomains`
