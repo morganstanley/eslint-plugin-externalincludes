@@ -27,6 +27,21 @@ While `@morgan-stanley/eslint-plugin-externalincludes` installs @html-eslint/esl
 
 ## Usage
 
+### Flat config (ESLint 9+)
+
+The simplest way to get started is the `recommended` config, which wires up `@html-eslint/parser`
+for `**/*.html` files and enables both rules:
+
+```js
+import externalincludes from "@morgan-stanley/eslint-plugin-externalincludes";
+
+export default [
+  externalincludes.configs.recommended,
+];
+```
+
+### Legacy `.eslintrc`
+
 Update your `.eslintrc` configuration file to add ESLint override for html files to specify the @html-eslint/parser and extend recommended rules if desired.
 Add `@html-eslint` and  `externalincludes` to the plugins section.
 You can omit the `eslint-plugin-` prefix:
