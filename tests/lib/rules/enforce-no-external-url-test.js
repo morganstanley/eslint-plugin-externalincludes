@@ -203,6 +203,21 @@ ruleTester.run(
                     }
                 ]
             },
+            {
+                code:`
+<script src="//corp.com:x@evil.com/payload.js" />
+`,
+                options: [
+                    {
+                        ignoreDomains: [ "corp.com" ],
+                    },
+                ],
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
         ],
     }
 );

@@ -44,7 +44,27 @@ describe('fuzz isInternalOrIgnored', () => {
     );
   });
 
-  it('completes within a sane time budget even with a regex-metacharacter-laden ignoreDomains entry (ReDoS guard)', () => {
+  it('never constructs a RegExp from ignoreDomains input (deterministic ReDoS guard)', () => {
+    const OriginalRegExp = global.RegExp;
+    let constructed = false;
+    global.RegExp = new Proxy(OriginalRegExp, {
+      construct(target, args) {
+        constructed = true;
+        return new target(...args);
+      }
+    });
+    try {
+      const node = { attributes: [{ key: { value: 'src' }, value: { value: '//evil.com/x.js' } }] };
+      isInternalOrIgnored(node, 'src', ['(.+)+x', '.*', 'a|b']);
+    } finally {
+      global.RegExp = OriginalRegExp;
+    }
+    if (constructed) {
+      throw new Error('isInternalOrIgnored constructed a RegExp from ignoreDomains input - possible ReDoS');
+    }
+  });
+
+  it('completes within a sane time budget even with a regex-metacharacter-laden ignoreDomains entry (secondary ReDoS smoke check)', () => {
     const node = { attributes: [{ key: { value: 'src' }, value: { value: 'https://example.com/' + 'a'.repeat(2000) } }] };
     const start = Date.now();
     isInternalOrIgnored(node, 'src', ['(.+)+x']);
