@@ -22,7 +22,7 @@ algorithms like `sha1` - are treated the same as a missing `integrity` attribute
 
 #### Options
 
-##### `ignoredDomains`
+##### `ignoreDomains`
 
 You can provide an array of allowed domains that are ignored.
 
