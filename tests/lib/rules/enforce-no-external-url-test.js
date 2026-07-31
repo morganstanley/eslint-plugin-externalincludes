@@ -188,6 +188,66 @@ ruleTester.run(
                     }
                 ]
             },
+            {
+                code:`
+<a href="https://evil.com/phish"></a>
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<object data="https://evil.com/payload.swf"></object>
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<embed src="https://evil.com/payload.swf" />
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<video src="https://evil.com/video.mp4"></video>
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<audio src="https://evil.com/audio.mp3"></audio>
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<source src="https://evil.com/video.mp4" />
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
         ],
     }
 );
