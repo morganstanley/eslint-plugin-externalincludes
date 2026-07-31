@@ -48,4 +48,22 @@ describe("plugin entry point", () => {
             assert.strictEqual(recommended.rules["externalincludes/require-script-integrity"], "warn");
         });
     });
+
+    describe("configs.recommendedLegacy (.eslintrc-shaped)", () => {
+        const legacy = plugin.configs.recommendedLegacy;
+
+        it("registers the plugin under the legacy string-array shape", () => {
+            assert.deepStrictEqual(legacy.plugins, ["externalincludes"]);
+        });
+
+        it("enables both rules with the expected severities", () => {
+            assert.strictEqual(legacy.rules["externalincludes/enforce-no-external-url"], "error");
+            assert.strictEqual(legacy.rules["externalincludes/require-script-integrity"], "warn");
+        });
+
+        it("has no files/languageOptions - legacy .eslintrc has no such primitive", () => {
+            assert.strictEqual(legacy.files, undefined);
+            assert.strictEqual(legacy.languageOptions, undefined);
+        });
+    });
 });
