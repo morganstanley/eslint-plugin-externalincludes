@@ -4,6 +4,7 @@ import { FlatCompat } from "@eslint/eslintrc";
 import path from "path";
 import { fileURLToPath } from "url";
 import licenseHeader from "eslint-plugin-license-header";
+import externalincludes from "./lib/index.js";
 
 // Get the directory name equivalent to __dirname in CommonJS
 const __filename = fileURLToPath(import.meta.url);
@@ -48,7 +49,12 @@ export default [
     ...eslintRecommended,
     ...eslintPluginRecommended,
     ...nRecommended,
-    
+
+    // Dogfood this plugin's own recommended preset against the HTML fixture below,
+    // so a regression in the flat-config wiring (parser, plugin key, file scoping)
+    // fails `npm run lint` instead of shipping silently.
+    externalincludes.configs.recommended,
+
     // Global configuration
     {
         files: ["**/*.js", "**/*.mjs", "**/*.cjs"],
