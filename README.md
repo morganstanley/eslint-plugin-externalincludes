@@ -27,6 +27,36 @@ While `@morgan-stanley/eslint-plugin-externalincludes` installs @html-eslint/esl
 
 ## Usage
 
+### Flat config (ESLint 9+)
+
+The simplest way to get started is the `recommended` config, which wires up `@html-eslint/parser`
+for `**/*.html` files and enables both rules:
+
+```js
+import externalincludes from "@morgan-stanley/eslint-plugin-externalincludes";
+
+export default [
+  externalincludes.configs.recommended,
+];
+```
+
+The preset registers this plugin under the `externalincludes` key, so if you want to override a rule's
+severity or options, reference it as `externalincludes/<rule>` (not the npm package name):
+
+```js
+export default [
+  externalincludes.configs.recommended,
+  {
+    files: ["**/*.html"],
+    rules: {
+      "externalincludes/enforce-no-external-url": ["error", { ignoreDomains: [".example.com"] }],
+    },
+  },
+];
+```
+
+### Legacy `.eslintrc`
+
 Update your `.eslintrc` configuration file to add ESLint override for html files to specify the @html-eslint/parser and extend recommended rules if desired.
 Add `@html-eslint` and  `externalincludes` to the plugins section.
 You can omit the `eslint-plugin-` prefix:
@@ -55,6 +85,12 @@ Then configure the rules you want to use under the rules section:
     }
 }
 ```
+
+Alternatively, `configs.recommendedLegacy` provides the same rule set in this `.eslintrc`-compatible shape
+(`{ plugins: [...], rules: {...} }`) if you'd rather spread it in than list the rules manually. Note it
+still only covers the `plugins`/`rules` portion - you still need the `overrides` block above (or equivalent)
+to wire up `@html-eslint/parser` for `*.html` files, since legacy `.eslintrc` config objects have no `files`
+scoping primitive of their own.
 
 If you are using the VS Code ESLint extension, update settings.json to include validation of html:
 
