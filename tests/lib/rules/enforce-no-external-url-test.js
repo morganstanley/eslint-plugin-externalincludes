@@ -39,11 +39,6 @@ ruleTester.run(
             },
             {
                 code:`
-<script src="//foo/foo.js" />
-`
-            },
-            {
-                code:`
 <script src="https://www.foo.com/foo.js" />
 `,
                 options: [
@@ -242,6 +237,76 @@ ruleTester.run(
                 code:`
 <source src="https://evil.com/video.mp4" />
 `,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<script src="//foo/foo.js" />
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<script src="HTTPS://www.myfoo.com/foo.js" />
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<script src=" https://www.myfoo.com/foo.js" />
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<script src="data:text/javascript,alert(1)" />
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<script src="https://attacker-corp.com/foo.js" />
+`,
+                options: [
+                    {
+                        ignoreDomains: [ "corp.com" ],
+                    },
+                ],
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<script src="//corp.com:x@evil.com/payload.js" />
+`,
+                options: [
+                    {
+                        ignoreDomains: [ "corp.com" ],
+                    },
+                ],
                 errors: [
                     {
                         messageId: "externalURL",

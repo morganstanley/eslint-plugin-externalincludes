@@ -24,22 +24,42 @@ ruleTester.run(
         valid: [
             {
                 code:`
-<script src="foo.js" integrity="foobar" />
+<script src="foo.js" integrity="sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC" />
 `
             },
             {
                 code:`
 <script src="foo.js" />
 `
-            },            
+            },
             {
                 code:`
 <html>
     <head>
-        <script src="foo.js" integrity="foobar" />
+        <script src="foo.js" integrity="sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC" />
     </head>
     <body></body>
 </html>
+`
+            },
+            {
+                code:`
+<script src="https://cdn.example.com/foo.js" integrity="sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=" />
+`
+            },
+            {
+                code:`
+<script src="https://cdn.example.com/foo.js" INTEGRITY="sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC" />
+`
+            },
+            {
+                code:`
+<script src="https://cdn.example.com/foo.js" integrity="sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU= sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC" />
+`
+            },
+            {
+                code:`
+<script src="https://cdn.example.com/foo.js" integrity=" sha384-oqVuAfXRKap7fdgcCY5uykM6+R9GqQ8K/uxy9rx7HNQlGYl1kPzQho1wx4JwY8wC " />
 `
             },
             {
@@ -110,6 +130,46 @@ ruleTester.run(
                         column: 9,
                         endColumn: 43,
                         endLine: 4
+                    }
+                ]
+            },
+            {
+                code:`
+<script src="https://cdn.example.com/foo.js" integrity="foobar" />
+`,
+                errors: [
+                    {
+                        messageId: "missingIntegrity",
+                    }
+                ]
+            },
+            {
+                code:`
+<script src="https://cdn.example.com/foo.js" integrity="placeholder" />
+`,
+                errors: [
+                    {
+                        messageId: "missingIntegrity",
+                    }
+                ]
+            },
+            {
+                code:`
+<script src="https://cdn.example.com/foo.js" integrity="sha1-abc" />
+`,
+                errors: [
+                    {
+                        messageId: "missingIntegrity",
+                    }
+                ]
+            },
+            {
+                code:`
+<script src="https://cdn.example.com/foo.js" async integrity="" />
+`,
+                errors: [
+                    {
+                        messageId: "missingIntegrity",
                     }
                 ]
             },
