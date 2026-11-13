@@ -1,4 +1,6 @@
-# Disallow external includes (`@morgan-stanley/externalincludes/enforce-no-external-url`)
+# @morgan-stanley/externalincludes/enforce-no-external-url
+
+📝 Disallow external includes.
 
 <!-- end auto-generated rule header -->
 
@@ -32,7 +34,9 @@ You can provide an array of allowed domains that are ignored.
 
 ##### `attributes`
 
-You can provide an array of tag.attribute in which to apply the rule.  The default is [ "script.src", "link.href" ].  These values should be all lower case as they will be compared to lower cased tag/attributes of the target.
+You can provide an array of tag.attribute in which to apply the rule.  The default is [ "script.src", "link.href", "iframe.src", "img.src", "source.src", "object.data", "embed.src", "video.src", "audio.src", "form.action", "a.href" ].  These values should be all lower case as they will be compared to lower cased tag/attributes of the target.
+
+Note: `source.srcset` / `img.srcset` are not included by default. srcset values are a comma-separated list of URL/descriptor candidates rather than a single URL, and this rule does not parse that grammar - so an external candidate other than the first one would go undetected. Adding `srcset` attributes via this option is therefore not currently recommended.
 
 ```
   rules: {

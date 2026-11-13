@@ -39,7 +39,7 @@
     "nyc": "^18.0.0"
   },
   "engines": {
-    "node": "^14.17.0 || ^16.0.0 || >= 18.0.0"
+    "node": ">= 20.0.0"
   },
   "peerDependencies": {
     "@html-eslint/eslint-plugin": ">=0.36",

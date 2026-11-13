@@ -1,4 +1,6 @@
-# Require `integrity` attribute at `<script>` tag (`@morgan-stanley/externalincludes/require-script-integrity`)
+# @morgan-stanley/externalincludes/require-script-integrity
+
+📝 Require `integrity` attribute at `<script>` tag.
 
 <!-- end auto-generated rule header -->
 

@@ -4,6 +4,7 @@ import { FlatCompat } from "@eslint/eslintrc";
 import path from "path";
 import { fileURLToPath } from "url";
 import licenseHeader from "eslint-plugin-license-header";
+import eslintPlugin from "eslint-plugin-eslint-plugin";
 import externalincludes from "./lib/index.js";
 
 // Get the directory name equivalent to __dirname in CommonJS
@@ -35,19 +36,22 @@ const compat = new FlatCompat({
 
 // Get the ESLint configurations from plugins
 const eslintRecommended = compat.extends("eslint:recommended");
-const eslintPluginRecommended = compat.extends("plugin:eslint-plugin/recommended");
+// eslint-plugin-eslint-plugin is ESM-only; FlatCompat loads plugins via CommonJS
+// require(), which yields { default: ... } and so can't find its `configs`. Use the
+// plugin's already-flat `configs.recommended` (plugins object + rules) directly.
+const eslintPluginRecommended = eslintPlugin.configs.recommended;
 const nRecommended = compat.extends("plugin:n/recommended");
 
 // Create the flat config array
 export default [
     // Base configuration with ignores
     {
-        ignores: ["node_modules/**"]
+        ignores: ["node_modules/**", "coverage/**"]
     },
     
     // Include the plugin configurations
     ...eslintRecommended,
-    ...eslintPluginRecommended,
+    eslintPluginRecommended,
     ...nRecommended,
 
     // Dogfood this plugin's own recommended preset against the HTML fixture below,
