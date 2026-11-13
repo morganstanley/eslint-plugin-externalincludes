@@ -12,11 +12,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - JSDocs documentation
 - Test coverage with nyc and coverage thresholds
 - Fuzzing
+- `configs.recommendedLegacy`, a `.eslintrc`-shaped equivalent of `configs.recommended` for consumers on
+  ESLint's legacy config system
 
 ### Changed
 - Removed npm-run-all dependency and updated scripts configuration
 - Added lint:fix script
 - Continuous integration action now using 'npm ci'
+
+### Breaking
+- `configs.recommended` is now an ESLint 9+ flat config object (`files`, `languageOptions.parser`, an
+  object-shaped `plugins` map) instead of the previous `.eslintrc`-shaped object. It was already
+  non-functional under flat config (the project's only supported ESLint major per `peerDependencies`), so
+  this fixes a real bug, but it is still a shape change for anyone spreading the old object directly -
+  see `configs.recommendedLegacy` above if you need the old shape.
 
 ### Dependencies
 - Bumped @html-eslint/eslint-plugin from 0.34.0 to 0.35.0
