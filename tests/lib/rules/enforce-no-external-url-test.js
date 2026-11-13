@@ -39,11 +39,6 @@ ruleTester.run(
             },
             {
                 code:`
-<script src="//foo/foo.js" />
-`
-            },
-            {
-                code:`
 <script src="https://www.foo.com/foo.js" />
 `,
                 options: [
@@ -61,6 +56,11 @@ ruleTester.run(
                         ignoreDomains: [ ".foo.com" ],
                     },
                 ],
+            },
+            {
+                code:`
+<iframe src="local-frame.html"></iframe>
+`
             },
         ],
         invalid: [
@@ -150,6 +150,166 @@ ruleTester.run(
                         column: 9,
                         endColumn: 43,
                         endLine: 4
+                    }
+                ]
+            },
+            {
+                code:`
+<iframe src="https://evil.com/clickjack.html"></iframe>
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<img src="https://www.myfoo.com/foo.png" />
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<form action="https://evil.com/login" method="POST"></form>
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<a href="https://evil.com/phish"></a>
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<object data="https://evil.com/payload.swf"></object>
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<embed src="https://evil.com/payload.swf" />
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<video src="https://evil.com/video.mp4"></video>
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<audio src="https://evil.com/audio.mp3"></audio>
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<source src="https://evil.com/video.mp4" />
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<script src="//foo/foo.js" />
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<script src="HTTPS://www.myfoo.com/foo.js" />
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<script src=" https://www.myfoo.com/foo.js" />
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<script src="data:text/javascript,alert(1)" />
+`,
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<script src="https://attacker-corp.com/foo.js" />
+`,
+                options: [
+                    {
+                        ignoreDomains: [ "corp.com" ],
+                    },
+                ],
+                errors: [
+                    {
+                        messageId: "externalURL",
+                    }
+                ]
+            },
+            {
+                code:`
+<script src="//corp.com:x@evil.com/payload.js" />
+`,
+                options: [
+                    {
+                        ignoreDomains: [ "corp.com" ],
+                    },
+                ],
+                errors: [
+                    {
+                        messageId: "externalURL",
                     }
                 ]
             },
