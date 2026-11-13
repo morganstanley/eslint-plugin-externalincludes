@@ -1,4 +1,6 @@
-# Disallow external includes (`@morgan-stanley/externalincludes/enforce-no-external-url`)
+# @morgan-stanley/externalincludes/enforce-no-external-url
+
+📝 Disallow external includes.
 
 <!-- end auto-generated rule header -->
 
